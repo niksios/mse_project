@@ -53,7 +53,7 @@ public class AlbumList_Fragment_Main3 extends Fragment {
 
         progressBar = new ProgressDialog(getActivity());
         progressBar.setCancelable(false);//you can cancel it by pressing back button
-        progressBar.setMessage("Fetching albums..");
+        progressBar.setMessage("Fetching posts..");
         progressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressBar.show();//displays the progress bar
 
