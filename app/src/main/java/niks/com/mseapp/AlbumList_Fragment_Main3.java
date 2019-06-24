@@ -28,7 +28,6 @@ public class AlbumList_Fragment_Main3 extends Fragment {
 
     CustomAdapter_Posts ca;
 
-
     private ProgressDialog progressBar;
 
     @Override

@@ -86,8 +86,6 @@ public class AlbumList_Fragment extends Fragment {
                 //getting the result from the API in json format
                 List<Albums_Modal> albumsList = response.body();
 
-
-
                 String[] id = new String[albumsList.size()];
                 String[] userID = new String[albumsList.size()];
                 String[] title = new String[albumsList.size()];
@@ -99,6 +97,7 @@ public class AlbumList_Fragment extends Fragment {
                     userID[i] = albumsList.get(i).getUserId();
                     id[i] = albumsList.get(i).getId();
                     title[i] = albumsList.get(i).getTitle();
+
                 }
 
 
@@ -109,7 +108,6 @@ public class AlbumList_Fragment extends Fragment {
 
                         if (o1.getTitle().compareToIgnoreCase(o2.getTitle()) > 0) return 1;
                         if (o1.getTitle().compareToIgnoreCase(o2.getTitle()) < 0) return -1;
-
                         return 0;
                     }
                 });

@@ -33,8 +33,8 @@ class MainActivity2 : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val fm = supportFragmentManager
-        val fragment = AlbumList_Fragment()
-        //val fragment = Album_Kotlin()
+       // val fragment = AlbumList_Fragment()
+        val fragment = AlbumList_Fragment_Kotlin()
         fm.beginTransaction().add(R.id.frameLayout, fragment).commit()
 
     }
