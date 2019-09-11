@@ -26,6 +26,10 @@ public class AlbumList_Fragment_Main3 extends Fragment {
 
     ListView listview;
 
+
+
+    //new comment
+
     CustomAdapter_Posts ca;
 
     private ProgressDialog progressBar;
