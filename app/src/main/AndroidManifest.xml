@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ando"
         android:supportsRtl="true"
         android:theme="@style/BaseAppTheme">
-        <activity android:name=".SplashScreen_Kotlin"
+        <activity android:name=".activities.SplashScreen_Kotlin"
                   android:screenOrientation="portrait"
                   android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
@@ -24,14 +24,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity2"
+        <activity android:name=".activities.MainActivity2"
                   android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             />
-        <activity android:name=".MainActivity" android:screenOrientation="portrait"  />
-        <activity android:name=".MainActivity3" android:screenOrientation="portrait" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".SplashScreen" android:screenOrientation="portrait" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".SplashScreen_Menu" android:screenOrientation="portrait" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <activity android:name=".activities.MainActivity3" android:screenOrientation="portrait" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".activities.SplashScreen_Menu" android:screenOrientation="portrait" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
     </application>
 
