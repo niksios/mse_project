@@ -1,4 +1,4 @@
-package niks.com.mseapp
+package niks.com.mseapp.fragments
 
 import android.app.ProgressDialog
 import android.os.Bundle
@@ -8,47 +8,60 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import android.widget.Toast
+
+import java.util.Collections
+import java.util.Comparator
+
 import niks.com.mseapp.Album_Modal.Albums_Modal
+import niks.com.mseapp.interfaces.ApiInterface
+import niks.com.mseapp.adapters.CustomAdapter
+import niks.com.mseapp.R
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.*
 
-class Album_Kotlin : Fragment(){
-
-    internal lateinit var listview: ListView
-
-    private val progressBar: ProgressDialog? = null
-
-    private var ca: CustomAdapter_Kotlin? = null
-
-    private var imageModelArrayList: ArrayList<Albums_Modal>? = null
+class AlbumList_Fragment_Kotlin : Fragment() {
 
 
+   // internal var listview: ListView
+   //List view to show data
+   private var ListView: ListView? = null
 
+   private var progressBar: ProgressDialog? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        // Inflate the layout for this fragment
+        //This layout contains your list view
         val view = inflater.inflate(R.layout.activity_main2, container, false)
 
-        listview = view.findViewById<View>(R.id.listViewHeroes) as ListView
+        //now you must initialize your list view
+        ListView = view.findViewById<View>(R.id.listViewHeroes) as ListView
+
 
         //call the albums list from the URL using Retrofit
         getAlbums()
 
-
-        return super.onCreateView(inflater, container, savedInstanceState)
-
+        return view
     }
 
 
+    private fun showProgress() {
 
+        progressBar = ProgressDialog(activity)
+        progressBar!!.setCancelable(false)//you can cancel it by pressing back button
+        progressBar!!.setMessage("Fetching albums..")
+        progressBar!!.setProgressStyle(ProgressDialog.STYLE_SPINNER)
+        progressBar!!.show()//displays the progress bar
+
+
+    }
 
     private fun getAlbums() {
 
-
+        showProgress()
 
         val retrofit = Retrofit.Builder()
                 .baseUrl(ApiInterface.BASE_URL)
@@ -62,23 +75,29 @@ class Album_Kotlin : Fragment(){
         call.enqueue(object : Callback<List<Albums_Modal>> {
             override fun onResponse(call: Call<List<Albums_Modal>>, response: Response<List<Albums_Modal>>) {
 
+                progressBar!!.dismiss()
 
                 //getting the result from the API in json format
                 val albumsList = response.body()
 
+//                val id = arrayOfNulls<String>(albumsList!!.size)
+//                val userID = arrayOfNulls<String>(albumsList.size)
+//                val title = arrayOfNulls<String>(albumsList.size)
 
-                var id = arrayOf<String>()[albumsList!!.size]
-                var userID = arrayOf<String>()[albumsList!!.size]
-                var title = arrayOf<String>()[albumsList!!.size]
+                val id = arrayOfNulls<String>(albumsList!!.size)
+                val userID = arrayOfNulls<String>(albumsList.size)
+                val title = arrayOfNulls<String>(albumsList.size)
+
 
 
                 //looping through all the albums and inserting the columns data inside the string array
                 if (albumsList != null) {
                     for (i in albumsList.indices) {
 
-                        userID = albumsList[i].userId
-                        id = albumsList[i].id
-                        title = albumsList[i].title
+                        userID[i] = albumsList!![i].userId
+                        id[i] = albumsList[i].id
+                        title[i] = albumsList[i].title
+
                     }
                 }
 
@@ -91,26 +110,25 @@ class Album_Kotlin : Fragment(){
 
 
                 //sorted JSON array title alphabetically
-                if (albumsList != null) {
-                    for (i in albumsList.indices) {
+                for (i in albumsList.indices) {
 
-                        userID = albumsList[i].userId
-                        id = albumsList[i].id
-                        title = albumsList[i].title
-                    }
+                    userID[i] = albumsList[i].userId
+                    id[i] = albumsList[i].id
+                    title[i] = albumsList[i].title
                 }
 
                 //design the custom list adapter and seetting the sorted array
-                ca = CustomAdapter_Kotlin(activity!!, albumsList!!)
+                val ca = CustomAdapter(activity!!, userID, id, title)
 
                 //setting adapter to list view
-                listview.setAdapter(ca)
+                ListView!!.adapter = ca
 
 
             }
 
             override fun onFailure(call: Call<List<Albums_Modal>>, t: Throwable) {
 
+                progressBar!!.dismiss()
                 Toast.makeText(activity, "Data Fetching Error..", Toast.LENGTH_SHORT).show()
 
             }

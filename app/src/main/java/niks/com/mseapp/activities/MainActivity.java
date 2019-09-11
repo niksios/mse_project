@@ -1,4 +1,4 @@
-package niks.com.mseapp;
+package niks.com.mseapp.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.List;
 
 import niks.com.mseapp.Album_Modal.Albums_Modal;
+import niks.com.mseapp.R;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

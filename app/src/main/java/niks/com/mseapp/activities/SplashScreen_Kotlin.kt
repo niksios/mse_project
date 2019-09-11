@@ -1,9 +1,10 @@
-package niks.com.mseapp
+package niks.com.mseapp.activities
 
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import niks.com.mseapp.R
 
 import java.util.Timer
 import java.util.TimerTask

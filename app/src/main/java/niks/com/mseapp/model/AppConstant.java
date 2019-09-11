@@ -1,4 +1,4 @@
-package niks.com.mseapp;
+package niks.com.mseapp.model;
 
 public interface AppConstant {
 

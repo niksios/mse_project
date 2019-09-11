@@ -1,14 +1,14 @@
-package niks.com.mseapp
+package niks.com.mseapp.adapters
 
 import android.app.Activity
 import android.content.Context
-import android.support.v4.app.FragmentActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import niks.com.mseapp.Album_Modal.Albums_Modal
+import niks.com.mseapp.R
 
 class CustomAdapter_Kotlin(private val context: Activity, private val imageModelArrayList: List<Albums_Modal>) : BaseAdapter() {
 

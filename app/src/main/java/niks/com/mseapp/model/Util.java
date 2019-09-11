@@ -1,4 +1,4 @@
-package niks.com.mseapp;
+package niks.com.mseapp.model;
 
 import android.app.Activity;
 import android.content.Context;

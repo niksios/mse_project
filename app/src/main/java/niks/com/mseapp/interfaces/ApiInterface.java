@@ -1,4 +1,4 @@
-package niks.com.mseapp;
+package niks.com.mseapp.interfaces;
 
 import java.util.List;
 

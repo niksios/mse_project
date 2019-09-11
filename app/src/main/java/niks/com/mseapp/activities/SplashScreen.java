@@ -1,15 +1,14 @@
-package niks.com.mseapp;
+package niks.com.mseapp.activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+import niks.com.mseapp.R;
 
 public class SplashScreen extends AppCompatActivity {
 
